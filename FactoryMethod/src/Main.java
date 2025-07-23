@@ -1,14 +1,20 @@
- public class Main {
+import java.util.Scanner;
+
+public class Main {
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
         TransportFactory transportFactory = new TransportFactory();
 
-        Transport truckTransport = transportFactory.createTransport("TRUCK");
-        truckTransport.deliver();
+        System.out.print("Enter the delivery method (Truck, Ship, Drone): ");
+        String deliveryMethod = scanner.nextLine();
 
-        Transport shipTransport = transportFactory.createTransport("SHIP");
-        shipTransport.deliver();
 
-        Transport droneTransport = transportFactory.createTransport("DRONE");
-        droneTransport.deliver();
+        Transport transport = transportFactory.createTransport(deliveryMethod.toUpperCase());
+        transport.deliver();
+
+        scanner.close();
+
     }
 }
